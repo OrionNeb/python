@@ -1,0 +1,124 @@
+---
+lang: de  # Dokumentensprache: Deutsch
+
+format:
+  pdf:
+    documentclass: book
+    classoption: openany, oneside  # Kapitel auf jeder Seite starten (verhindert leere Seiten)
+    mainfont: "Latin Modern Roman"
+    fontsize: 11pt
+    linestretch: 1.5  # Zeilenabstand auf 1,5 setzen (für bessere Lesbarkeit)
+    code-fold: false  # Code-Chunks bleiben immer sichtbar (nicht einklappbar)
+    toc: false
+    toc-depth: 4
+    number-sections: true
+    unnumbered-sections: true
+    geometry: "top=3cm, bottom=3cm, headheight=15pt, headsep=1.5cm, footskip=1.5cm"
+    pdf-engine: lualatex
+    listings: false
+    highlight-style: tango  # Syntax-Highlighting für Code
+    code-block-font-size: \tiny
+    code-overflow: wrap
+    include-in-header: 
+      - setup/header.qmd
+    include-before-body:
+      - setup/mainmatter.qmd
+  html:
+    code-fold: true  # Code-Chunks in HTML können ausgeklappt werden
+    toc: false
+    toc-depth: 4
+    number-sections: true
+    self-contained: true  # Alle Ressourcen (Bilder, CSS, etc.) in einer Datei speichern
+    other-formats: ["pdf", "docx", "pptx"]
+  docx:
+    toc: false
+    number-sections: true
+  pptx:
+    reference-doc: setup/FHDW-Powerpoint-Vorlage_16zu9.pptx  # (Optional) Eigene Vorlage nutzen
+# bibliography: setup/references.yaml
+# citeproc: true
+# csl: https://www.zotero.org/styles/apa-with-abstract # setup/apa-with-abstract.csl
+# link-citations: true
+# link-bibliography: true
+editor: source
+execute:
+  freeze: auto
+  eval: true
+  echo: true       # Code anzeigen
+  results: markup  # Output als formatierten Text ausgeben
+  warning: false   # Warnungen unterdrücken
+  message: false   # Nachrichten (z. B. von Paketen) unterdrücken
+  code-overflow: wrap  # Lange Zeilen umbrechen
+---
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=FALSE}
+# Installiere und lade erforderliche Bibliotheken
+if (!requireNamespace("reticulate", quietly = TRUE)) install.packages("reticulate")
+if (!requireNamespace("rmarkdown", quietly = TRUE)) install.packages("rmarkdown")
+if (!requireNamespace("shiny", quietly = TRUE)) install.packages("shiny")
+if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
+if (!requireNamespace("tidyr", quietly = TRUE)) install.packages("tidyr")
+if (!requireNamespace("tidyverse", quietly = TRUE)) install.packages("tidyverse")
+if (!requireNamespace("forecast", quietly = TRUE)) install.packages("forecast")
+if (!requireNamespace("ggpubr", quietly = TRUE)) install.packages("ggpubr")
+# if (!requireNamespace("viridis", quietly = TRUE)) install.packages("viridis")
+
+
+
+library(reticulate)
+library(rmarkdown)
+library(shiny)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(forecast)
+library(ggpubr)
+# library(viridis)
+```
+
+```{python, include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+# Erforderliche Bibliotheken installieren (falls nicht vorhanden)
+import subprocess
+import sys
+
+def install_and_import(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    finally:
+        globals()[package] = __import__(package)
+
+# Äquivalente Bibliotheken in Python installieren und importieren
+libraries = ["pandas", "numpy", "matplotlib", "seaborn", "scipy"]
+
+for lib in libraries:
+    install_and_import(lib)
+
+# Bibliotheken laden
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+from statsmodels.tsa.seasonal import STL
+from pulp import LpMaximize, LpProblem, LpVariable, value
+
+```
+
+
+
+<!-- ================= Übungsdatei ================= -->
+
+# Übung 1
+
+
+
+
+
+
+
+
+<!-- ================= Ende ================= -->
+
+
